@@ -23,3 +23,21 @@ function cl_load_textdomain() {
     load_plugin_textdomain('cl-slide-languages', false, basename(dirname(__FILE__)) . '/languages');
 }
 add_action('plugins_loaded', 'cl_load_textdomain');
+
+// Alterar o texto do link "Plugin URI" na listagem de plugins
+function csp_custom_plugin_row_meta($links, $file) {
+    // Nome do arquivo principal do plugin
+    $plugin = plugin_basename(__FILE__);
+
+    // Verifica se é o plugin certo
+    if ($file == $plugin) {
+        // URL desejada para "Ver detalhes"
+        $url = 'https://www.behance.net/clemilsksouza';
+
+        // Texto a ser exibido
+        $links[1] = '<a href="' . esc_url($url) . '" target="_blank">Ver detalhes</a>';
+    }
+
+    return $links;
+}
+add_filter('plugin_row_meta', 'csp_custom_plugin_row_meta', 10, 2);
