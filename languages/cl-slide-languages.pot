@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Slideshow Clemilsk 1.0\n"
+"Report-Msgid-Bugs-To: https://example.com\n"
+"POT-Creation-Date: 2024-07-19 00:00+0000\n"
+"PO-Revision-Date: 2024-07-19 00:00+0000\n"
+"Last-Translator: Seu Nome <seuemail@example.com>\n"
+"Language-Team: Portuguese <https://example.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n:1,2;_nx:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: custom-slideshow-clemilsk.php:11
+msgid "Custom Slideshow clemilsk"
+msgstr ""
+
+#: custom-slideshow-clemilsk.php:12
+msgid "Adds a custom post type for slides and displays a slideshow using Bootstrap."
+msgstr ""
+
+#: custom-slideshow-clemilsk.php:14
+msgid "Custom Slideshow clemilsk"
+msgstr ""
+
+#: custom-slideshow-clemilsk.php:15
+msgid "Adds a custom post type for slides and displays a slideshow using Bootstrap."
+msgstr ""
+
+#: includes/csp-functions.php:6
+msgid "Slides"
+msgstr ""
+
+#: includes/csp-functions.php:7
+msgid "Slide"
+msgstr ""
+
+#: includes/csp-functions.php:8
+msgid "Slides"
+msgstr ""
+
+#: includes/csp-functions.php:9
+msgid "Slide"
+msgstr ""
+
+#: includes/csp-functions.php:10
+msgid "Add New"
+msgstr ""
+
+#: includes/csp-functions.php:11
+msgid "Add New Slide"
+msgstr ""
+
+#: includes/csp-functions.php:12
+msgid "New Slide"
+msgstr ""
+
+#: includes/csp-functions.php:13
+msgid "Edit Slide"
+msgstr ""
+
+#: includes/csp-functions.php:14
+msgid "View Slide"
+msgstr ""
+
+#: includes/csp-functions.php:15
+msgid "All Slides"
+msgstr ""
+
+#: includes/csp-functions.php:16
+msgid "Search Slides"
+msgstr ""
+
+#: includes/csp-functions.php:17
+msgid "No slides found."
+msgstr ""
+
+#: includes/csp-functions.php:18
+msgid "No slides found in Trash."
+msgstr ""
+
+#: includes/csp-functions.php:19
+msgid "Slide Cover Image"
+msgstr ""
+
+#: includes/csp-functions.php:20
+msgid "Set cover image"
+msgstr ""
+
+#: includes/csp-functions.php:21
+msgid "Remove cover image"
+msgstr ""
+
+#: includes/csp-functions.php:22
+msgid "Use as cover image"
+msgstr ""
+
+#: includes/csp-functions.php:23
+msgid "Slide archives"
+msgstr ""
+
+#: includes/csp-functions.php:24
+msgid "Insert into slide"
+msgstr ""
+
+#: includes/csp-functions.php:25
+msgid "Uploaded to this slide"
+msgstr ""
+
+#: includes/csp-functions.php:26
+msgid "Filter slides list"
+msgstr ""
+
+#: includes/csp-functions.php:27
+msgid "Slides list navigation"
+msgstr ""
+
+#: includes/csp-functions.php:28
+msgid "Slides list"
+msgstr ""
