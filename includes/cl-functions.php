@@ -5,14 +5,14 @@ function csp_create_slide_post_type() {
     $labels = array(
         'name'                  => _x('Slides', 'Post type general name', 'custom-slideshow-plugin'),
         'singular_name'         => _x('Slide', 'Post type singular name', 'custom-slideshow-plugin'),
-        'menu_name'             => _x('Slides', 'Admin Menu text', 'custom-slideshow-plugin'),
+        'menu_name'             => _x('Slide', 'Admin Menu text', 'custom-slideshow-plugin'),
         'name_admin_bar'        => _x('Slide', 'Add New on Toolbar', 'custom-slideshow-plugin'),
-        'add_new'               => __('Add New', 'custom-slideshow-plugin'),
+        'add_new'               => __('Adicionar Novo', 'custom-slideshow-plugin'),
         'add_new_item'          => __('Add New Slide', 'custom-slideshow-plugin'),
         'new_item'              => __('New Slide', 'custom-slideshow-plugin'),
-        'edit_item'             => __('Edit Slide', 'custom-slideshow-plugin'),
+        'edit_item'             => __('Editar Slide', 'custom-slideshow-plugin'),
         'view_item'             => __('View Slide', 'custom-slideshow-plugin'),
-        'all_items'             => __('All Slides', 'custom-slideshow-plugin'),
+        'all_items'             => __('Todos', 'custom-slideshow-plugin'),
         'search_items'          => __('Search Slides', 'custom-slideshow-plugin'),
         'not_found'             => __('No slides found.', 'custom-slideshow-plugin'),
         'not_found_in_trash'    => __('No slides found in Trash.', 'custom-slideshow-plugin'),
@@ -39,7 +39,7 @@ function csp_create_slide_post_type() {
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
-        'menu_icon'          => 'dashicons-cover-image',
+        'menu_icon'          => 'dashicons-slides',
         'menu_position'      => null,
         'supports'           => array('title', 'editor', 'thumbnail'),
     );
@@ -65,6 +65,11 @@ add_action('wp_enqueue_scripts', 'csp_enqueue_assets');
 
 // Shortcode para exibir o slideshow
 function csp_display_slideshow() {
+    // Obter as configurações
+    $options = get_option('csp_settings');
+    $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '20px';
+    $slide_size = isset($options['slide_size']) ? $options['slide_size'] : '800px';
+
     $args = array(
         'post_type'      => 'slide',
         'orderby' => 'date',
@@ -77,16 +82,15 @@ function csp_display_slideshow() {
 
     if ($slide_query->have_posts()) : ?>
 
-        <div class="csp-slideshow-container">
+        <div class="csp-slideshow-container" style="max-width: <?php echo esc_attr($slide_size); ?>;">
             <?php $slide_index = 0; while ($slide_query->have_posts()) : $slide_query->the_post(); ?>
                 <div class="slide">
-                   
                     <?php if ( has_post_thumbnail() ) {
-    the_post_thumbnail('full', array(
-        'class' => 'slide-image',
-        'alt'   => get_the_title()
-    ));
-} ?>
+                        the_post_thumbnail('full', array(
+                            'class' => 'slide-image',
+                            'alt'   => get_the_title()
+                        ));
+                    } ?>
                     
                     <div class="content">
                         <h1><?php the_title(); ?></h1>
@@ -99,17 +103,17 @@ function csp_display_slideshow() {
             <!-- Indicadores -->
             <div class="carousel-indicators">
                 <?php $slide_index = 0; while ($slide_query->have_posts()) : $slide_query->the_post(); ?>
-                    <span class="indicator" onclick="currentSlide(<?php echo $slide_index; ?>" class="<?php echo $slide_index === 0 ? 'active' : ''; ?>" aria-current="true" aria-label="Slide <?php echo $slide_index + 1; ?>)"></span>
+                    <span class="indicator" onclick="currentSlide(<?php echo $slide_index; ?>)" class="<?php echo $slide_index === 0 ? 'active' : ''; ?>" aria-current="true" aria-label="Slide <?php echo $slide_index + 1; ?>)"></span>
                 <?php $slide_index++; endwhile; ?>
             </div>
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            <button class="prev" onclick="changeSlide(-1)" style="font-size: <?php echo esc_attr($arrow_size); ?>;">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)" style="font-size: <?php echo esc_attr($arrow_size); ?>;">&#10095;</button>
         </div>
 
     <?php wp_reset_postdata(); ?>
     <?php endif;
-    
+
     return ob_get_clean();
-   
 }
-add_shortcode('custom_slideshow', 'csp_display_slideshow'); //[custom_slideshow]
+add_shortcode('custom_slideshow', 'csp_display_slideshow');
+ //[custom_slideshow]
