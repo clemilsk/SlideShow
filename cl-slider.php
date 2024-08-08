@@ -35,7 +35,7 @@ function csp_custom_plugin_row_meta($links, $file) {
         $url = 'https://www.behance.net/clemilsksouza';
 
         // Texto a ser exibido
-        $links[1] = '<a href="' . esc_url($url) . '" target="_blank">Ver detalhes</a>';
+        $links[2] = '<a href="' . esc_url($url) . '" target="_blank">Ver detalhes</a>';
     }
 
     return $links;
