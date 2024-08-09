@@ -61,8 +61,8 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'csp_add_settings
 function csp_add_settings_submenu() {
     add_submenu_page(
         'edit.php?post_type=slide', // O slug do menu pai (o Custom Post Type "Slide")
-        'Configurações do Slideshow', // Título da página
-        'Opções', // Título do menu
+        'Configurações', // Título da página
+        'Geral', // Título do menu
         'manage_options', // Capacidade necessária
         'csp-plugin-settings', // Slug da página de opções
         'csp_display_settings_page' // Função que exibe o conteúdo da página
@@ -74,7 +74,7 @@ add_action('admin_menu', 'csp_add_settings_submenu');
 function csp_display_settings_page() {
     ?>
     <div class="wrap">
-        <h1>Configurações do Slideshow</h1>
+        <h1>Configurações Gerais</h1>
         <form method="post" action="options.php">
             <?php
             settings_fields('csp-settings-group');
@@ -93,9 +93,9 @@ function csp_register_settings() {
 
     // Adicionar uma seção
     add_settings_section(
-        'csp_settings_section',
+        'csp_geral_section',
         'Configurações Gerais',
-        'csp_settings_section_callback',
+        'csp_geral_section_callback',
         'csp-plugin-settings'
     );
 
@@ -105,7 +105,12 @@ function csp_register_settings() {
         'Tamanho das Setas',
         'csp_arrow_size_callback',
         'csp-plugin-settings',
-        'csp_settings_section'
+        'csp_geral_section',
+        [
+            'label_for' => 'csp_arrow_size',
+            'class' => 'setas_my',
+        ]
+        
     );
 
     add_settings_field(
@@ -113,21 +118,30 @@ function csp_register_settings() {
         'Tamanho dos Slides',
         'csp_slide_size_callback',
         'csp-plugin-settings',
-        'csp_settings_section'
+        'csp_geral_section'
+    );
+
+    add_settings_field(
+        'csp_title_size',
+        'Tamanho do titulo',
+        'csp_title_size_callback',
+        'csp-plugin-settings',
+        'csp_geral_section'
     );
 }
 add_action('admin_init', 'csp_register_settings');
 
 // Callback da seção
-function csp_settings_section_callback() {
+function csp_geral_section_callback() {
     echo 'Aqui você pode configurar as opções do slideshow.';
 }
 
 // Callback para o campo "Tamanho das Setas"
-function csp_arrow_size_callback() {
+function csp_arrow_size_callback($args) {
     $options = get_option('csp_settings');
     $arrow_size = isset($options['arrow_size']) ? esc_attr($options['arrow_size']) : '';
-    echo '<input type="text" name="csp_settings[arrow_size]" value="' . $arrow_size . '" />';
+    
+    echo '<input type="text" id="'. esc_attr($args['label_for']) .'" name="csp_settings[arrow_size]" value="' . $arrow_size . '" />';
 }
 
 // Callback para o campo "Tamanho dos Slides"
@@ -135,4 +149,11 @@ function csp_slide_size_callback() {
     $options = get_option('csp_settings');
     $slide_size = isset($options['slide_size']) ? esc_attr($options['slide_size']) : '';
     echo '<input type="text" name="csp_settings[slide_size]" value="' . $slide_size . '" />';
+}
+
+// Callback para o campo "Titulo"
+function csp_title_size_callback() {
+    $options = get_option('csp_settings');
+    $title_size = isset($options['title_size']) ? esc_attr($options['title_size']) : '';
+    echo '<input type="text" name="csp_settings[title_size]" value="' . $title_size . '" />';
 }

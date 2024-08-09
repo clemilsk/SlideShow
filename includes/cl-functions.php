@@ -67,8 +67,9 @@ add_action('wp_enqueue_scripts', 'csp_enqueue_assets');
 function csp_display_slideshow() {
     // Obter as configurações
     $options = get_option('csp_settings');
-    $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '30px';
-    $slide_size = isset($options['slide_size']) ? $options['slide_size'] : '1280px';
+    $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '20px';
+    $slide_size = isset($options['slide_size']) ? $options['slide_size'] : '800px';
+    $title_size = isset($options['title_size']) ? $options['title_size'] : '4.6rem';
 
     $args = array(
         'post_type'      => 'slide',
@@ -93,7 +94,7 @@ function csp_display_slideshow() {
                     } ?>
                     
                     <div class="content">
-                        <h1><?php the_title(); ?></h1>
+                        <h1 style="font-size: <?php echo esc_attr($title_size); ?>;"><?php the_title(); ?></h1>
                         <p><?php the_content(); ?></p>
                         <button>Saiba Mais</button>
                     </div>
