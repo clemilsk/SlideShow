@@ -67,8 +67,8 @@ add_action('wp_enqueue_scripts', 'csp_enqueue_assets');
 function csp_display_slideshow() {
     // Obter as configurações
     $options = get_option('csp_settings');
-    $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '20px';
-    $slide_size = isset($options['slide_size']) ? $options['slide_size'] : '800px';
+    $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '30px';
+    $slide_size = isset($options['slide_size']) ? $options['slide_size'] : '1280px';
 
     $args = array(
         'post_type'      => 'slide',
