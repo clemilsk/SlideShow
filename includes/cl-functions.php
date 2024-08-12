@@ -4,9 +4,9 @@
 function csp_create_slide_post_type() {
     $labels = array(
         'name'                  => _x('Slides', 'Post type general name', 'custom-slideshow-plugin'),
-        'singular_name'         => _x('Slide', 'Post type singular name', 'custom-slideshow-plugin'),
-        'menu_name'             => _x('Slide', 'Admin Menu text', 'custom-slideshow-plugin'),
-        'name_admin_bar'        => _x('Slide', 'Add New on Toolbar', 'custom-slideshow-plugin'),
+        'singular_name'         => _x('Slidec', 'Post type singular name', 'custom-slideshow-plugin'),
+        'menu_name'             => _x('Slidec', 'Admin Menu text', 'custom-slideshow-plugin'),
+        'name_admin_bar'        => _x('Slidec', 'Add New on Toolbar', 'custom-slideshow-plugin'),
         'add_new'               => __('Adicionar Novo', 'custom-slideshow-plugin'),
         'add_new_item'          => __('Add New Slide', 'custom-slideshow-plugin'),
         'new_item'              => __('New Slide', 'custom-slideshow-plugin'),
@@ -39,9 +39,9 @@ function csp_create_slide_post_type() {
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
-        'menu_icon'          => 'dashicons-slides',
+        'menu_icon'          => 'dashicons-ellipsis',
         'menu_position'      => null,
-        'supports'           => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'thumbnail', 'excerpt'),
     );
 
     register_post_type('slide', $args);
@@ -55,66 +55,38 @@ define('MEU_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 // Enfileirar arquivos CSS e JavaScript
 function csp_enqueue_assets() {
+
     // Enfileirar CSS
     wp_enqueue_style('meu-plugin-style', MEU_PLUGIN_URL . '/assets/css/style.css', array(), '1.0', 'all');
 
+    //wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', array(), '5.0.2', 'all');
+
     // Enfileirar JavaScript
     wp_enqueue_script('meu-plugin-script', MEU_PLUGIN_URL . '/assets/js/scripts.js', array(), '1.0', true);
+
+    // Enfileirar o JS do Bootstrap
+    //wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array('jquery'), '5.0.2', true);
+
 }
 add_action('wp_enqueue_scripts', 'csp_enqueue_assets');
 
-// Shortcode para exibir o slideshow
-function csp_display_slideshow() {
-    // Obter as configurações
-    $options = get_option('csp_settings');
-    $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '20px';
-    $slide_size = isset($options['slide_size']) ? $options['slide_size'] : '800px';
-    $title_size = isset($options['title_size']) ? $options['title_size'] : '4.6rem';
+// Função para enfileirar o Bootstrap apenas nas páginas do plugin
+function csp_enqueue_bootstrap_for_plugin($hook) {
 
-    $args = array(
-        'post_type'      => 'slide',
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'posts_per_page' => -1,
-    );
+    // Verifica se estamos na página do plugin
+    if ($hook === 'toplevel_page_csp-plugin-settings' || strpos($hook, 'csp-plugin-settings') !== false) {
 
-    $slide_query = new WP_Query($args);
-    ob_start();
+        // Enfileirar CSS
+        wp_enqueue_style('meu-plugin-style', MEU_PLUGIN_URL . '/assets/css/style.css', array(), '1.0', 'all');
 
-    if ($slide_query->have_posts()) : ?>
+        // Enfileirar o CSS do Bootstrap
+        wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', array(), '5.0.2', 'all');
 
-        <div class="csp-slideshow-container" style="max-width: <?php echo esc_attr($slide_size); ?>;">
-            <?php $slide_index = 0; while ($slide_query->have_posts()) : $slide_query->the_post(); ?>
-                <div class="slide">
-                    <?php if ( has_post_thumbnail() ) {
-                        the_post_thumbnail('full', array(
-                            'class' => 'slide-image',
-                            'alt'   => get_the_title()
-                        ));
-                    } ?>
-                    
-                    <div class="content">
-                        <h1 style="font-size: <?php echo esc_attr($title_size); ?>;"><?php the_title(); ?></h1>
-                        <p><?php the_content(); ?></p>
-                        <button>Saiba Mais</button>
-                    </div>
-                </div>
-            <?php $slide_index++; endwhile; ?>
-            
-            <!-- Indicadores -->
-            <div class="carousel-indicators">
-                <?php $slide_index = 0; while ($slide_query->have_posts()) : $slide_query->the_post(); ?>
-                    <span class="indicator" onclick="currentSlide(<?php echo $slide_index; ?>)" class="<?php echo $slide_index === 0 ? 'active' : ''; ?>" aria-current="true" aria-label="Slide <?php echo $slide_index + 1; ?>)"></span>
-                <?php $slide_index++; endwhile; ?>
-            </div>
-            <button class="prev" onclick="changeSlide(-1)" style="font-size: <?php echo esc_attr($arrow_size); ?>;">&#10094;</button>
-            <button class="next" onclick="changeSlide(1)" style="font-size: <?php echo esc_attr($arrow_size); ?>;">&#10095;</button>
-        </div>
-
-    <?php wp_reset_postdata(); ?>
-    <?php endif;
-
-    return ob_get_clean();
+        // Enfileirar o JS do Bootstrap
+        wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array('jquery'), '5.0.2', true);
+        
+    }
 }
-add_shortcode('custom_slideshow', 'csp_display_slideshow');
- //[custom_slideshow]
+add_action('admin_enqueue_scripts', 'csp_enqueue_bootstrap_for_plugin');
+
+

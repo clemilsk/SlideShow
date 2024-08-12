@@ -115,7 +115,7 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.carousel-indicators {
+.carousel-indicators-cl {
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -137,6 +137,39 @@ button:hover {
 .indicator.active, .indicator:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+/* Inicio Page wp opções */
+
+*{
+    body { background-color: #fff !important;}
+}
+
+
+.form-table th {
+    width: 0 !important;
+    padding: 0 !important;
+}
+
+.form-table td {
+    padding: 0 !important;
+}
+
+.mb-3 {
+    margin: .6rem 0 !important;
+}
+
+.form-floating>.form-select {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.form-floating>.form-control, .form-floating>.form-select {
+    max-width: 100% !important;
+    height: calc(2rem + 2px) !important;
+    line-height: 1.25;
+}
+
+/* Fim Page wp opções */
 
 @media (max-width: 980px) { 
   	.content {
