@@ -69,12 +69,12 @@ add_action('admin_menu', 'csp_add_settings_submenu');
 function csp_display_settings_page() {
     ?>
     <div class="wrap">
-        <h1><?php esc_html_e('Configurações do Slideshow', 'csp-textdomain'); ?></h1>
+        <h1><?php esc_html_e('', 'csp-textdomain'); ?></h1>
         <form action="options.php" method="post">
             <?php
             // Gera os campos de configuração para a página de opções
             settings_fields('csp_settings_group');
-            do_settings_sections('csp-plugin-settings');
+            do_settings_sections('csp-plugin-settings'); 
             submit_button();
             ?>
         </form>

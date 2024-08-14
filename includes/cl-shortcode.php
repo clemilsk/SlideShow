@@ -7,6 +7,10 @@ function csp_display_slideshow() {
     $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '20px';
     $slide_size = isset($options['slide_size']) ? $options['slide_size'] : '800px';
     $title_size = isset($options['title_size']) ? $options['title_size'] : '4.6rem';
+    $title_color = isset($options['title_color']) ? $options['title_color'] : '#ffffff';
+    $title_font = isset($options['title_font']) ? esc_attr($options['title_font']) : '"Times New Roman", Times, serif';
+    $title_peso = isset($options['title_peso']) ? esc_attr($options['title_peso']) : '400';
+    $title_line = isset($options['title_line']) ? esc_attr($options['title_line']) : '1.0';
 
     $args = array(
         'post_type'      => 'slide',
@@ -31,7 +35,7 @@ function csp_display_slideshow() {
                     } ?>
                     
                     <div class="content">
-                        <h1 style="font-size: <?php echo esc_attr($title_size); ?>rem;"><?php the_title(); ?></h1>
+                        <h1 style="font-size: <?php echo esc_attr($title_size); ?>rem; color: <?php echo esc_attr($title_color); ?>; font-family:<?php echo esc_attr($title_font); ?>; font-weight:<?php echo esc_attr($title_peso); ?>; line-height:<?php echo esc_attr($title_line); ?>;"><?php the_title(); ?></h1>
                
                         <p><?php the_excerpt(); ?></p>
                         <button>Saiba Mais</button>

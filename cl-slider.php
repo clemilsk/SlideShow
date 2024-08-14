@@ -1,6 +1,6 @@
 <?php
 /**
- * Classic Editor
+ * Slidec
  *
  * Plugin Name: Slidec
  * Plugin URI: https://www.behance.net/clemilsksouza
