@@ -21,8 +21,13 @@ if (!defined('ABSPATH')) {
 
 // Incluir arquivo de funções
 require_once plugin_dir_path(__FILE__) . 'includes/cl-functions.php';
-require_once plugin_dir_path(__FILE__) . 'includes/custom-plugin-row-meta.php';
-require_once plugin_dir_path(__FILE__) . 'includes/cl-callback.php';
+require_once plugin_dir_path(__FILE__) . 'includes/cl-meta-campos.php';
+require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-session.php';
+require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-titulo.php';
+require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-subtitulo.php';
+require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-size-slide.php';
+require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-setas.php';
+require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-btn.php';
 require_once plugin_dir_path(__FILE__) . 'includes/cl-shortcode.php';
 
 
