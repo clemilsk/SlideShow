@@ -27,7 +27,7 @@
     z-index: 0;
 }
 
-.content {
+/*.content {
     position: absolute;
     bottom: 25%;
     left: 8rem;
@@ -38,10 +38,11 @@
     background-color: rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 8px;
-    opacity: 0; /* Começa com o texto invisível */
-    transform: translateY(20px); /* Começa deslocado para baixo */
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Suaviza a transição do texto */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
+*/
 
 .slide.active .content {
     opacity: 1; /* Torna o texto visível */

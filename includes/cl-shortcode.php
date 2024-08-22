@@ -16,7 +16,7 @@ function csp_display_slideshow() {
     $title_line = isset($options['title_line']) ? esc_attr($options['title_line']) : '1.0';
     $title_color = isset($options['title_color']) ? $options['title_color'] : '#ffffff';
 
-    //Sub título
+    //Sub Título
     $size_st = isset($options['size_st']) ? esc_attr($options['size_st']) : ''; 
     $font_st = isset($options['font_st']) ? esc_attr($options['font_st']) : '"Times New Roman", Times, serif';
     $peso_st = isset($options['peso_st']) ? esc_attr($options['peso_st']) : '300';
@@ -24,11 +24,18 @@ function csp_display_slideshow() {
     $color_st = isset($options['color_st']) ? esc_attr($options['color_st']) : '#ffffff';
 
     //Button
-    $size_font_btn = isset($options['size_font_btn']) ? esc_attr($options['size_font_btn']) : '4rem'; 
+    $size_font_btn = isset($options['size_font_btn']) ? esc_attr($options['size_font_btn']) : '1.7rem'; 
+    $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : '"Times New Roman", Times, serif'; 
     $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '#585858';
     $btn_padding = isset($options['btn_padding']) ? esc_attr($options['btn_padding']) : '1rem 2rem 1rem 2rem';
     $btn_checkbox = isset($options['btn_checkbox']) ? esc_attr($options['btn_checkbox']) : '';
     $display = ($btn_checkbox == 1) ? "block" : "none";
+
+    // Campos Border radius
+    $br_top_btn = isset($options['br_top_btn']) ? esc_attr($options['br_top_btn']) : '';
+    $br_right_btn = isset($options['br_right_btn']) ? esc_attr($options['br_right_btn']) : '';
+    $br_bottom_btn = isset($options['br_bottom_btn']) ? esc_attr($options['br_bottom_btn']) : '';
+    $br_left_btn = isset($options['br_left_btn']) ? esc_attr($options['br_left_btn']) : '';
 
     $args = array(
         'post_type'      => 'slide',
@@ -54,6 +61,22 @@ function csp_display_slideshow() {
                     
                     <style>
 
+                        .content {
+                            position: absolute;
+                            bottom: 25%;
+                            left: 8rem;
+                            z-index: 1;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            background-color: #00000000;
+                            padding: 20px;
+                            border-radius: 8px;
+                            opacity: 0; 
+                            transform: translateY(20px); 
+                            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+                        }
+
                         .content p{
                             font-family: <?php echo esc_attr($font_st); ?>;
                             font-weight: <?php echo esc_attr($peso_st); ?>;
@@ -66,7 +89,19 @@ function csp_display_slideshow() {
                             color: <?php echo esc_attr($color_st); ?>;
                         }
 
-                        button {
+                        .prev .next {
+                            cursor: pointer;
+                            padding: 10px 20px;
+                            font-size: <?php echo esc_attr($size_font_btn); ?>;
+                            display: block;
+                            color: white;
+                            background-color: #555;
+                            border: none;
+                            border-radius: 5px;
+                            transition: background-color 0.3s;
+                        }
+
+                        .btn-callback {
                             cursor: pointer;
                             padding: 10px 20px;
                             font-size: <?php echo esc_attr($size_font_btn); ?>;
@@ -85,7 +120,7 @@ function csp_display_slideshow() {
             
                         <?php the_excerpt(); ?>
                         
-                        <button style="background-color: <?php echo esc_attr($btn_color); ?>; padding: <?php echo esc_attr($btn_padding); ?>; ">Saiba Mais</button>
+                        <button class="btn-callback" style="background-color: <?php echo esc_attr($btn_color); ?>; font-family: <?php echo esc_attr($font_btn); ?>; padding: <?php echo esc_attr($btn_padding); ?>; border-radius: <?php echo esc_attr($br_top_btn); ?> <?php echo esc_attr($br_right_btn); ?> <?php echo esc_attr($br_bottom_btn); ?> <?php echo esc_attr($br_left_btn); ?>; ">Saiba Mais</button>
 
                     </div>
                 </div>
