@@ -33,6 +33,8 @@ function csp_btn_callback() {
     $size_font_btn = isset($options['size_font_btn']) ? esc_attr($options['size_font_btn']) : '';
     $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : ''; 
     $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '';
+    $btn_bg = isset($options['btn_bg']) ? esc_attr($options['btn_bg']) : '';
+    $btn_bg_hover = isset($options['btn_bg_hover']) ? esc_attr($options['btn_bg_hover']) : '';
     $btn_checkbox = isset($options['btn_checkbox']) ? esc_attr($options['btn_checkbox']) : '';
     $valor_true = 1;
     $status_mensagem = ($btn_checkbox == 1) ? "Ativo" : "Inativo";
@@ -95,8 +97,16 @@ function csp_btn_callback() {
 
                                 <div class="row g-3 my-2 mx-2">
                                     <div class="col">
+                                            <label for="exampleColorInput" class="form-label">Cor do texto</label>
+                                            <input type="color" class="form-control form-control-color" name="csp_settings[btn_color]" id="exampleColorInput" value="' . $btn_color . '" title="">
+                                    </div>
+                                    <div class="col">
                                             <label for="exampleColorInput" class="form-label">Cor do botão</label>
-                                            <input type="color" class="form-control form-control-color" name="csp_settings[btn_color]" id="exampleColorInput" value="' . $btn_color . '" title="Choose your color">
+                                            <input type="color" class="form-control form-control-color" name="csp_settings[btn_bg]" id="exampleColorInput" value="' . $btn_bg . '" title="">
+                                    </div>
+                                    <div class="col">
+                                            <label for="exampleColorInput" class="form-label">Cor do botão hover</label>
+                                            <input type="color" class="form-control form-control-color" name="csp_settings[btn_bg_hover]" id="exampleColorInput" value="' . $btn_bg_hover . '" title="">
                                     </div>
                                 </div>
                                 

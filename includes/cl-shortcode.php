@@ -8,7 +8,6 @@ function csp_display_slideshow() {
     $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '20px';
     $slide_size = isset($options['slide_size']) ? $options['slide_size'] : 'auto';
     
-
     //Título
     $title_size = isset($options['title_size']) ? $options['title_size'] : '4.6rem';
     $title_font = isset($options['title_font']) ? esc_attr($options['title_font']) : '"Times New Roman", Times, serif';
@@ -25,8 +24,10 @@ function csp_display_slideshow() {
 
     //Button
     $size_font_btn = isset($options['size_font_btn']) ? esc_attr($options['size_font_btn']) : '1.7rem'; 
-    $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : '"Times New Roman", Times, serif'; 
-    $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '#585858';
+    $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : '"Times New Roman", Times, serif';
+    $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '';
+    $btn_bg = isset($options['btn_bg']) ? esc_attr($options['btn_bg']) : '';
+    $btn_bg_hover = isset($options['btn_bg_hover']) ? esc_attr($options['btn_bg_hover']) : '';
     $btn_padding = isset($options['btn_padding']) ? esc_attr($options['btn_padding']) : '1rem 2rem 1rem 2rem';
     $btn_checkbox = isset($options['btn_checkbox']) ? esc_attr($options['btn_checkbox']) : '';
     $display = ($btn_checkbox == 1) ? "block" : "none";
@@ -63,18 +64,34 @@ function csp_display_slideshow() {
 
                         .content {
                             position: absolute;
-                            bottom: 25%;
+                            max-width: 100%;
+                            border: 1px solid #c00;
+                            top: 20%;
                             left: 8rem;
+                            right: 8rem;
                             z-index: 1;
                             display: flex;
+                            justify-content: center;
                             flex-direction: column;
-                            align-items: flex-start;
+                            align-items: start;
                             background-color: #00000000;
                             padding: 20px;
                             border-radius: 8px;
                             opacity: 0; 
                             transform: translateY(20px); 
                             transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+                        }
+
+                        .content h1 {
+                            font-family: <?php echo esc_attr($title_font); ?>;
+                            font-size: <?php echo esc_attr($title_size); ?>;
+                            font-weight:<?php echo esc_attr($title_peso); ?>;
+                            line-height:<?php echo esc_attr($title_line); ?>;
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: start;
+                           
+                            color: <?php echo esc_attr($title_color); ?>;
                         }
 
                         .content p{
@@ -84,7 +101,9 @@ function csp_display_slideshow() {
                             line-height: <?php echo esc_attr($line_st); ?>;
                             display: flex;
                             flex-wrap: wrap;
-                            max-width: 760px;
+                            text-align: start;
+                            align-items: start;
+                           
                             margin: 0 0 1rem 0;
                             color: <?php echo esc_attr($color_st); ?>;
                         }
@@ -103,26 +122,60 @@ function csp_display_slideshow() {
 
                         .btn-callback {
                             cursor: pointer;
-                            padding: 10px 20px;
+                            padding: <?php echo esc_attr($btn_padding); ?>;
+                            font-family: <?php echo esc_attr($font_btn); ?>;
                             font-size: <?php echo esc_attr($size_font_btn); ?>;
                             display: <?php echo esc_attr($display); ?>;
-                            color: white;
-                            background-color: #555;
+                            color: <?php echo esc_attr($btn_color); ?>;
+                            background-color: <?php echo esc_attr($btn_bg); ?>;
                             border: none;
-                            border-radius: 5px;
+                            border-radius: <?php echo esc_attr($br_top_btn); ?> <?php echo esc_attr($br_right_btn); ?> <?php echo esc_attr($br_bottom_btn); ?> <?php echo esc_attr($br_left_btn); ?>;
                             transition: background-color 0.3s;
                         }
+
+                        .btn-callback:hover {
+                            background-color: <?php echo esc_attr($btn_bg_hover); ?>;
+                            transform: translateX(2px); 
+                        }
+
+                        @media (max-width: 760px) {
+                            .prev,
+                            .next {
+                                display: none;
+                            }
+
+                            .content {
+                                position: absolute;
+                                left: 2rem;
+                                right: 2rem;
+                                z-index: 1;
+                                background-color: rgba(0, 0, 0, 0.1);
+                            }
+
+                            .content h1 {
+                                font-size: calc(<?php echo esc_attr($title_size); ?>/2);
+                                line-height:<?php echo esc_attr($title_line); ?>;
+                                max-width: 100%;
+                            }
+
+                            .content p {
+                                font-size: calc(<?php echo esc_attr($size_st); ?>/2);
+                                line-height: <?php echo esc_attr($line_st); ?>;
+                                max-width: 100%;
+                            }
+                        }
+
 
                     </style>
 
                     <div class="content">
-                        <h1 style="font-size: <?php echo esc_attr($title_size); ?>; color: <?php echo esc_attr($title_color); ?>; font-family:<?php echo esc_attr($title_font); ?>; font-weight:<?php echo esc_attr($title_peso); ?>; line-height:<?php echo esc_attr($title_line); ?>;"><?php the_title(); ?></h1>
+                        <h1><?php the_title(); ?></h1>
             
                         <?php the_excerpt(); ?>
-                        
-                        <button class="btn-callback" style="background-color: <?php echo esc_attr($btn_color); ?>; font-family: <?php echo esc_attr($font_btn); ?>; padding: <?php echo esc_attr($btn_padding); ?>; border-radius: <?php echo esc_attr($br_top_btn); ?> <?php echo esc_attr($br_right_btn); ?> <?php echo esc_attr($br_bottom_btn); ?> <?php echo esc_attr($br_left_btn); ?>; ">Saiba Mais</button>
-
+            
+                        <button class="btn-callback">Saiba Mais</button>
                     </div>
+
                 </div>
             <?php $slide_index++; endwhile; ?>
             

@@ -1,30 +1,30 @@
 /* Contêiner principal do slideshow */
 .csp-slideshow-container {
-    position: relative;
-    max-width: 100%;
-    height: 86vh;
-    margin: auto;
-    overflow: hidden;
-    border: 1px solid #ddd;
-    background: #fff;
+  position: relative;
+  max-width: 100%;
+  height: 86vh;
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background: #fff;
 }
 
 .slide {
-    background-color: #333;
-    color: white;
-    box-sizing: border-box;
-    transition: opacity 1s ease-in-out; /* Suaviza a transição entre slides */
-    opacity: 0; /* Começa com slides invisíveis */
+  background-color: #333;
+  color: white;
+  box-sizing: border-box;
+  transition: opacity 1s ease-in-out; /* Suaviza a transição entre slides */
+  opacity: 0; /* Começa com slides invisíveis */
 }
 
-.slide-image{
-    width: 100%;
-    height: 100vh !important;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
+.slide-image {
+  width: 100%;
+  height: 100vh !important;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 /*.content {
@@ -45,20 +45,20 @@
 */
 
 .slide.active .content {
-    opacity: 1; /* Torna o texto visível */
-    transform: translateY(0); /* Move o texto para a posição original */
+  opacity: 1; /* Torna o texto visível */
+  transform: translateY(0); /* Move o texto para a posição original */
 }
 
-.content h1{
-    font-family: "Open Sans", sans-serif;
-    font-weight: bold;
-    font-size: 4.6rem;
-    line-height: 5rem;
-    display: flex;
-    flex-wrap: wrap;
-    max-width:760px;
-    color: white;
-}
+/*.content h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 4.6rem;
+  line-height: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 760px;
+  color: white;
+}*/
 
 /*.content p{
     font-family: "Open Sans", sans-serif;
@@ -84,98 +84,103 @@ button {
 }*/
 
 button:hover {
-    background-color: #777;
+  background-color: #777;
 }
 
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    margin-top: -22px;
-    padding: 0;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    user-select: none;
-    border-radius: 50%;
-    z-index: 1;
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: -22px;
+  padding: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  user-select: none;
+  border-radius: 50%;
+  z-index: 1;
 }
 
 .prev {
-    left: 30px;
+  left: 30px;
 }
 
 .next {
-    right: 30px;
+  right: 30px;
 }
 
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-indicators-cl {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
 }
 
 .indicator {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s;
 }
 
-.indicator.active, .indicator:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.indicator.active,
+.indicator:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Inicio Page wp opções */
 
-*{
-    body { background-color: #fff !important;}
+* {
+  body {
+    background-color: #fff !important;
+  }
 }
 
 .form-table th {
-    width: 0 !important;
-    padding: 0 !important;
+  width: 0 !important;
+  padding: 0 !important;
 }
 
 .form-table td {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .mb-3 {
-    margin: .6rem 0 !important;
+  margin: 0.6rem 0 !important;
 }
 
-.form-floating>.form-select {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+.form-floating > .form-select {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
-.form-floating>.form-control, .form-floating>.form-select {
-    max-width: 100% !important;
-    height: calc(2rem + 2px) !important;
-    line-height: 1.25;
+.form-floating > .form-control,
+.form-floating > .form-select {
+  max-width: 100% !important;
+  height: calc(2rem + 2px) !important;
+  line-height: 1.25;
 }
 
 /* Fim Page wp opções */
 
-@media (max-width: 980px) { 
-  	.content {
+@media (max-width: 980px) {
+  .content {
     position: absolute;
-    bottom: 30%;
     left: 6rem;
     right: 6rem;
     z-index: 1;
@@ -187,22 +192,22 @@ button:hover {
     border-radius: 8px;
     opacity: 0; /* Começa com o texto invisível */
     transform: translateY(20px); /* Começa deslocado para baixo */
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out; 
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     /* Suaviza a 	transição do texto */
-}
-    
-    .content h1{
+  }
+
+  .content h1 {
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
     font-size: 2.6rem;
     line-height: 3rem;
     display: flex;
     flex-wrap: wrap;
-    max-width:100%;
+    max-width: 100%;
     color: white;
-}
+  }
 
-.content p{
+  .content p {
     font-family: "Open Sans", sans-serif;
     font-weight: normal;
     font-size: 1.6rem;
@@ -211,51 +216,6 @@ button:hover {
     flex-wrap: wrap;
     max-width: 100%;
     color: white;
-}
-}
-
-@media (max-width: 760px) { 
-    .prev, .next {
-       display: none;
-    }
-    
-    .content {
-    position: absolute;
-    bottom: 10%;
-    left: 2rem;
-    right: 2rem;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    opacity: 0; /* Começa com o texto invisível */
-    transform: translateY(20px); /* Começa deslocado para baixo */
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out; 
-    /* Suaviza a 	transição do texto */
-	}
-    
-    .content h1{
-    font-family: "Open Sans", sans-serif;
-    font-weight: bold;
-    font-size: 2.6rem;
-    line-height: 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    max-width:100%;
-    color: white;
+  }
 }
 
-.content p{
-    font-family: "Open Sans", sans-serif;
-    font-weight: normal;
-    font-size: 1.6rem;
-    line-height: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 100%;
-    color: white;
-}
-}
