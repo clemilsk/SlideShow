@@ -23,7 +23,8 @@ function csp_display_slideshow() {
     $color_st = isset($options['color_st']) ? esc_attr($options['color_st']) : '#ffffff';
 
     //Button
-    $size_font_btn = isset($options['size_font_btn']) ? esc_attr($options['size_font_btn']) : '1.7rem'; 
+    $size_font_btn_cl = isset($options['size_font_btn_cl']) ? esc_attr($options['size_font_btn_cl']) : '1.7rem';
+
     $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : '"Times New Roman", Times, serif';
     $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '';
     $btn_bg = isset($options['btn_bg']) ? esc_attr($options['btn_bg']) : '';
@@ -114,7 +115,7 @@ function csp_display_slideshow() {
                         .prev .next {
                             cursor: pointer;
                             padding: 10px 20px;
-                            font-size: <?php echo esc_attr($size_font_btn); ?>;
+                            font-size: <?php echo esc_attr($size_font_btn_cl); ?>;
                             display: block;
                             color: white;
                             background-color: #555;
@@ -127,7 +128,7 @@ function csp_display_slideshow() {
                             cursor: pointer;
                             padding: <?php echo esc_attr($btn_padding); ?>;
                             font-family: <?php echo esc_attr($font_btn); ?>;
-                            font-size: <?php echo esc_attr($size_font_btn); ?>;
+                            font-size: <?php echo esc_attr($size_font_btn_cl); ?>;
                             display: <?php echo esc_attr($display); ?>;
                             color: <?php echo esc_attr($btn_color); ?>;
                             background-color: <?php echo esc_attr($btn_bg); ?>;

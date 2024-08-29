@@ -30,7 +30,8 @@ function listar_opcoes_fontes_btn()
 // Callback para o campo "Titulo"
 function csp_btn_callback() {
     $options = get_option('csp_settings');
-    $size_font_btn = isset($options['size_font_btn']) ? esc_attr($options['size_font_btn']) : '';
+
+    $size_font_btn_cl = isset($options['size_font_btn_cl']) ? esc_attr($options['size_font_btn_cl']) : '';
     $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : ''; 
     $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '';
     $btn_bg = isset($options['btn_bg']) ? esc_attr($options['btn_bg']) : '';
@@ -53,7 +54,7 @@ function csp_btn_callback() {
                                 <div class="row g-3 my-2 mx-2">
                                     <div class="col">
                                         <label for="exampleFormControlInput1" class="form-label">Tamanho da fonte</label>
-                                        <input type="text" class="form-control" name="csp_settings[size_font_btn]" placeholder="Fonte BTN" aria-label="Title" value="' . $size_font_btn . '" />
+                                        <input type="text" class="form-control" name="csp_settings[size_font_btn_cl]" placeholder="" aria-label="Title" value="' . $size_font_btn_cl . '" />
                                         <div id="emailHelp" class="form-text" style="color: #c00; font-style: italic;">Ex.: 1px, 1rem, 1% </div>
                                     </div>
                                 </div>
