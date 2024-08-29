@@ -36,26 +36,31 @@ function csp_align_text_callback()
                     <div class="col-4">
                         <fieldset class="border my-4 p-2">
                             <legend  class="float-none w-auto px-2">Alinhar conteúdo</legend>
-                        <div class="row g-3 my-2 mx-2">
-                            <label for="exampleFormControlInput1" class="form-label">Peso da Fonte</label>
-                                <div class="form-floating">
-                                    <select class="form-select" id="floatingSelect" name="csp_settings[align_item_cl]" aria-label="Floating label select example">
-                                        <option selected>' . $align_item_cl . '</option>' ?>
-                                            <?php echo listar_align_flex(); ?>
-                                        <?php
+                            
+                            <div class="row g-3 my-2 mx-2">
+                                <div class="col">
+                                    <label for="exampleFormControlInput1" class="form-label">Alinhamento</label>
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelect" name="csp_settings[align_item_cl]" aria-label="Floating label select example">
+                                            <option selected>' . $align_item_cl . '</option>' ?>
+                                                <?php echo listar_align_flex(); ?>
+                                            <?php
     echo '   
-                                    </select>
-                                </div>
-                        </div>
-                                <div class="row g-3 my-2 mx-2">
-                                    <div class="col">
-                                        <label for="exampleFormControlInput1" class="form-label">Alinhamento</label>
-                                        <input type="text" class="form-control" name="csp_settings[size_font_btn]" placeholder="Fonte BTN" aria-label="Title" value="" />
-                                        <div id="emailHelp" class="form-text" style="color: #c00; font-style: italic;">Ex.: 1px, 1rem, 1% </div>
+                                        </select>
                                     </div>
                                 </div>
+                            </div>
                         </fieldset>
                     </div>
+
+                    <div class="col">
+                        <fieldset class="border my-4 p-2">
+
+                            <legend  class="float-none w-auto px-2">...</legend>
+                            
+                        </fieldset>
+                    </div>
+
                 </div>
     ';
 }

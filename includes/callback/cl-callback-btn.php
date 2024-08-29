@@ -32,9 +32,13 @@ function csp_btn_callback() {
     $options = get_option('csp_settings');
 
     $size_font_btn_cl = isset($options['size_font_btn_cl']) ? esc_attr($options['size_font_btn_cl']) : '';
+
+    $border_btn_cl = isset($options['border_btn_cl']) ? esc_attr($options['border_btn_cl']) : ''; 
+    
     $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : ''; 
     $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '';
     $btn_bg = isset($options['btn_bg']) ? esc_attr($options['btn_bg']) : '';
+    $btn_bg_opacidade = isset($options['btn_bg_opacidade']) ? esc_attr($options['btn_bg_opacidade']) : '';
     $btn_bg_hover = isset($options['btn_bg_hover']) ? esc_attr($options['btn_bg_hover']) : '';
     $btn_checkbox = isset($options['btn_checkbox']) ? esc_attr($options['btn_checkbox']) : '';
     $valor_true = 1;
@@ -110,6 +114,14 @@ function csp_btn_callback() {
                                             <input type="color" class="form-control form-control-color" name="csp_settings[btn_bg_hover]" id="exampleColorInput" value="' . $btn_bg_hover . '" title="">
                                     </div>
                                 </div>
+
+                                <div class="row g-3 my-2 mx-2">
+                                    <div class="col-6">
+                                        <label for="exampleFormControlInput1" class="form-label">Background Transparente</label>
+                                        <input type="text" class="form-control" name="csp_settings[btn_bg_opacidade]" placeholder="" aria-label="Title" value="' . $btn_bg_opacidade . '" />
+                                        <div id="emailHelp" class="form-text" style="color: #c00; font-style: italic;">Ex.: (00 = 0%)...(50 = 50%)...(ff = 100%) </div>
+                                    </div>
+                                </div>
                                 
                                 <div class="row g-3 my-2 mx-3">
                                     <div class="form-check" style="display: block;">
@@ -126,6 +138,23 @@ function csp_btn_callback() {
                         <fieldset class="border my-4 p-2">
 
                             <legend  class="float-none w-auto px-2">...</legend>
+
+                            <div class="row g-3 my-2 mx-2">
+                                <div class="col">
+                                    <label for="exampleFormControlInput1" class="form-label">Border Size</label>
+                                        <input type="text" class="form-control" name="csp_settings[border_btn_cl]" placeholder="" aria-label="Title" value="' . $border_btn_cl . '" />
+                                    <div id="emailHelp" class="form-text" style="color: #c00; font-style: italic;">Ex.: 1px, 1%, 1rem </div>
+                                </div>
+                            </div>
+                            
+                        </fieldset>
+                    </div>
+
+                    <div class="col">
+                        <fieldset class="border my-4 p-2">
+
+                            <legend  class="float-none w-auto px-2">...</legend>
+
                             
                         </fieldset>
                     </div>

@@ -25,10 +25,14 @@ function csp_display_slideshow() {
     //Button
     $size_font_btn_cl = isset($options['size_font_btn_cl']) ? esc_attr($options['size_font_btn_cl']) : '1.7rem';
 
+    $border_btn_cl = isset($options['border_btn_cl']) ? esc_attr($options['border_btn_cl']) : '0'; 
+
     $font_btn = isset($options['font_btn']) ? esc_attr($options['font_btn']) : '"Times New Roman", Times, serif';
+
+    $btn_bg_opacidade = isset($options['btn_bg_opacidade']) ? esc_attr($options['btn_bg_opacidade']) : '00';
     $btn_color = isset($options['btn_color']) ? esc_attr($options['btn_color']) : '';
-    $btn_bg = isset($options['btn_bg']) ? esc_attr($options['btn_bg']) : '';
-    $btn_bg_hover = isset($options['btn_bg_hover']) ? esc_attr($options['btn_bg_hover']) : '';
+    $btn_bg = isset($options['btn_bg']) ? esc_attr($options['btn_bg']) : 'transparent';
+    $btn_bg_hover = isset($options['btn_bg_hover']) ? esc_attr($options['btn_bg_hover']) : 'transparent';
     $btn_padding = isset($options['btn_padding']) ? esc_attr($options['btn_padding']) : '1rem 2rem 1rem 2rem';
     $btn_checkbox = isset($options['btn_checkbox']) ? esc_attr($options['btn_checkbox']) : '';
     $display = ($btn_checkbox == 1) ? "block" : "none";
@@ -68,8 +72,8 @@ function csp_display_slideshow() {
 
                         .content {
                             position: absolute;
-                            max-width: 100%;
-                            border: 0px solid #c00;
+                            max-width: 45%;
+                            border: 0 solid #c00;
                             top: 20%;
                             left: 8rem;
                             right: 8rem;
@@ -131,14 +135,14 @@ function csp_display_slideshow() {
                             font-size: <?php echo esc_attr($size_font_btn_cl); ?>;
                             display: <?php echo esc_attr($display); ?>;
                             color: <?php echo esc_attr($btn_color); ?>;
-                            background-color: <?php echo esc_attr($btn_bg); ?>;
-                            border: none;
+                            background-color: <?php echo esc_attr($btn_bg); ?><?php echo esc_attr($btn_bg_opacidade); ?>;
+                            border: <?php echo esc_attr($border_btn_cl); ?> solid #ffffff;
                             border-radius: <?php echo esc_attr($br_top_btn); ?> <?php echo esc_attr($br_right_btn); ?> <?php echo esc_attr($br_bottom_btn); ?> <?php echo esc_attr($br_left_btn); ?>;
                             transition: background-color 0.3s;
                         }
 
                         .btn-callback:hover {
-                            background-color: <?php echo esc_attr($btn_bg_hover); ?>;
+                            background-color: <?php echo esc_attr($btn_bg_hover); ?><?php echo esc_attr($btn_bg_opacidade); ?>;
                             transform: translateX(2px); 
                         }
 
