@@ -28,6 +28,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-subtitul
 require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-size-slide.php';
 require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-setas.php';
 require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-btn.php';
+require_once plugin_dir_path(__FILE__) . 'includes/callback/cl-callback-align-text-slide.php';
 require_once plugin_dir_path(__FILE__) . 'includes/cl-shortcode.php';
 
 

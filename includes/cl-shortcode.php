@@ -32,11 +32,14 @@ function csp_display_slideshow() {
     $btn_checkbox = isset($options['btn_checkbox']) ? esc_attr($options['btn_checkbox']) : '';
     $display = ($btn_checkbox == 1) ? "block" : "none";
 
-    // Campos Border radius
+    //Border radius button
     $br_top_btn = isset($options['br_top_btn']) ? esc_attr($options['br_top_btn']) : '';
     $br_right_btn = isset($options['br_right_btn']) ? esc_attr($options['br_right_btn']) : '';
     $br_bottom_btn = isset($options['br_bottom_btn']) ? esc_attr($options['br_bottom_btn']) : '';
     $br_left_btn = isset($options['br_left_btn']) ? esc_attr($options['br_left_btn']) : '';
+
+    //Alinhamento
+    $align_item_cl = isset($options['align_item_cl']) ? esc_attr($options['align_item_cl']) : 'start';
 
     $args = array(
         'post_type'      => 'slide',
@@ -44,7 +47,7 @@ function csp_display_slideshow() {
         'order' => 'ASC',
         'posts_per_page' => -1,
     );
-
+    
     $slide_query = new WP_Query($args);
     ob_start();
 
@@ -65,7 +68,7 @@ function csp_display_slideshow() {
                         .content {
                             position: absolute;
                             max-width: 100%;
-                            border: 1px solid #c00;
+                            border: 0px solid #c00;
                             top: 20%;
                             left: 8rem;
                             right: 8rem;
@@ -73,7 +76,7 @@ function csp_display_slideshow() {
                             display: flex;
                             justify-content: center;
                             flex-direction: column;
-                            align-items: start;
+                            align-items: <?php echo esc_attr($align_item_cl); ?>;
                             background-color: #00000000;
                             padding: 20px;
                             border-radius: 8px;
@@ -89,7 +92,7 @@ function csp_display_slideshow() {
                             line-height:<?php echo esc_attr($title_line); ?>;
                             display: flex;
                             flex-wrap: wrap;
-                            align-items: start;
+                            align-items: <?php echo esc_attr($align_item_cl); ?>;
                            
                             color: <?php echo esc_attr($title_color); ?>;
                         }
@@ -101,8 +104,8 @@ function csp_display_slideshow() {
                             line-height: <?php echo esc_attr($line_st); ?>;
                             display: flex;
                             flex-wrap: wrap;
-                            text-align: start;
-                            align-items: start;
+                            text-align: <?php echo esc_attr($align_item_cl); ?>;
+                            align-items: <?php echo esc_attr($align_item_cl); ?>;
                            
                             margin: 0 0 1rem 0;
                             color: <?php echo esc_attr($color_st); ?>;

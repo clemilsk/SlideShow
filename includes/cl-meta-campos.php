@@ -122,6 +122,15 @@ function csp_register_settings() {
         'csp_geral_section'
     );
 
+     // Adicionar campos para Button
+     add_settings_field(
+        'csp_align_text',
+        '',
+        'csp_align_text_callback',
+        'csp-plugin-settings',
+        'csp_geral_section'
+    );
+
     /* Adicionar campos de configuração
     add_settings_field(
         'csp_arrow_size',
