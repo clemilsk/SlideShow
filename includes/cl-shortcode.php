@@ -7,6 +7,7 @@ function csp_display_slideshow() {
     $options = get_option('csp_settings');
     $arrow_size = isset($options['arrow_size']) ? $options['arrow_size'] : '20px';
     $slide_size = isset($options['slide_size']) ? $options['slide_size'] : 'auto';
+    $max_width_cl = isset($options['slide_size']) ? $options['slide_size'] : '40%';
     
     //Título
     $title_size = isset($options['title_size']) ? $options['title_size'] : '4.6rem';
@@ -72,9 +73,9 @@ function csp_display_slideshow() {
 
                         .content {
                             position: absolute;
-                            max-width: 45%;
+                            max-width: <?php echo esc_attr($max_width_cl); ?>;
                             border: 0 solid #c00;
-                            top: 20%;
+                            top: 18%;
                             left: 8rem;
                             right: 8rem;
                             z-index: 1;
@@ -98,7 +99,6 @@ function csp_display_slideshow() {
                             display: flex;
                             flex-wrap: wrap;
                             align-items: <?php echo esc_attr($align_item_cl); ?>;
-                           
                             color: <?php echo esc_attr($title_color); ?>;
                         }
 
@@ -146,6 +146,53 @@ function csp_display_slideshow() {
                             transform: translateX(2px); 
                         }
 
+                        @media (max-width: 980px) {
+                            .content {
+                                position: absolute;
+                                max-width: 100%;
+                                top: 25%;
+                                left: 6rem;
+                                right: 6rem;
+                                z-index: 1;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                background-color: rgba(0, 0, 0, 0);
+                                padding: 20px;
+                                border-radius: 8px;
+                                opacity: 0; /* Começa com o texto invisível */
+                                transform: translateY(20px); /* Começa deslocado para baixo */
+                                transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+                                /* Suaviza a 	transição do texto */
+                            }
+
+                            .content h1 {
+                                font-family: "Open Sans", sans-serif;
+                                font-weight: bold;
+                                font-size: 2.6rem;
+                                line-height: 3rem;
+                                display: flex;
+                                flex-wrap: wrap;
+                                max-width: 100%;
+                                color: white;
+                            }
+
+                            .content p {
+                                font-family: "Open Sans", sans-serif;
+                                font-weight: normal;
+                                font-size: 1.6rem;
+                                line-height: 2rem;
+                                display: flex;
+                                flex-wrap: wrap;
+                                max-width: 100%;
+                                color: white;
+                            }
+
+                            .slide-image {
+                                object-position: 92% center;
+                            }
+                        }
+
                         @media (max-width: 760px) {
                             .prev,
                             .next {
@@ -154,14 +201,16 @@ function csp_display_slideshow() {
 
                             .content {
                                 position: absolute;
+                                max-width: 100%;
+                                top: 40%;
                                 left: 2rem;
                                 right: 2rem;
                                 z-index: 1;
-                                background-color: rgba(0, 0, 0, 0.1);
+                                background-color: rgba(0, 0, 0, 0.2);
                             }
 
                             .content h1 {
-                                font-size: calc(<?php echo esc_attr($title_size); ?>/2);
+                                font-size: calc(<?php echo esc_attr($title_size); ?>/2.2);
                                 line-height:<?php echo esc_attr($title_line); ?>;
                                 max-width: 100%;
                             }
@@ -170,6 +219,10 @@ function csp_display_slideshow() {
                                 font-size: calc(<?php echo esc_attr($size_st); ?>/2);
                                 line-height: <?php echo esc_attr($line_st); ?>;
                                 max-width: 100%;
+                            }
+
+                            .slide-image {
+                                object-position: 80% center;
                             }
                         }
 
